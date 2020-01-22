@@ -471,22 +471,22 @@ int main()
     //               {-2, -1, -2, 240},
     //               {6, 5, 4, 0}};
     
-    int rows = 5;
-    int cols = 3;
-    float input[5][3] = {{-1, -1, 18}, 
-                   {-1, 0, 11},
-                   {0, -1, 10},
-                   {1, 1, -9},
-                   {1, 3, -229}};
+    //int rows = 5;
+    //int cols = 3;
+    //float input[5][3] = {{-1, -1, 18}, 
+    //               {-1, 0, 11},
+    //               {0, -1, 10},
+    //               {1, 1, -9},
+    //               {1, 3, -229}};
     
-    //int rows = 1000;
-    //int cols = rows / 2;
-    //float **input = new float*[rows];
-    //for (int i = 0; i < rows; i++)
-    //    input[i] = new float[cols];
+    int rows = 1000;
+    int cols = rows / 2;
+    float **input = new float*[rows];
+    for (int i = 0; i < rows; i++)
+        input[i] = new float[cols];
 
-    //rand_init(input, rows, cols);
-    //cout << "finish initialization." << endl;
+    rand_init(input, rows, cols);
+    cout << "finish initialization." << endl;
     
     vector <vector<float> > A(rows, vector<float>(cols, 0));
 

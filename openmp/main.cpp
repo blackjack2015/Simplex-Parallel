@@ -184,7 +184,7 @@ class Simplex{
                 if (!finished){
 
                     int p = -1;
-                    if(rows < 1000){
+                    if(rows < 1000000){
                         for(int l = 0; l < rows - 3; l++){
                             if (Aw[l][q] < 0)
                                 if (p == -1)
@@ -413,14 +413,14 @@ void rand_init(float **input, int rows, int cols){
 int main()
 {
     
-    //int rows = 6;
-    //int cols = 5;
-    //float input[6][5] = {{1, 1, 0, 0, -7}, 
-    //               {0, 0, 1, 1, -9},
-    //               {-1, 0, 0, 0, 5},
-    //               {0, -1, -1, 0, 10},
-    //               {0, 0, 0, -1, 7},
-    //               {-10, -8, -9, -12, 0}};
+    int rows = 6;
+    int cols = 5;
+    float input[6][5] = {{1, 1, 0, 0, -7}, 
+                   {0, 0, 1, 1, -9},
+                   {-1, 0, 0, 0, 5},
+                   {0, -1, -1, 0, 10},
+                   {0, 0, 0, -1, 7},
+                   {-10, -8, -9, -12, 0}};
 
     //int rows = 4;
     //int cols = 4;
@@ -437,14 +437,14 @@ int main()
     //               {1, 1, -9},
     //               {1, 3, -229}};
     
-    int rows = 8000;
-    int cols = rows / 2;
-    float **input = new float*[rows];
-    for (int i = 0; i < rows; i++)
-        input[i] = new float[cols];
+    //int rows = 1000;
+    //int cols = rows / 2;
+    //float **input = new float*[rows];
+    //for (int i = 0; i < rows; i++)
+    //    input[i] = new float[cols];
 
-    rand_init(input, rows, cols);
-    cout << "finish initialization." << endl;
+    //rand_init(input, rows, cols);
+    //cout << "finish initialization." << endl;
 
     vector <vector<float> > A(rows, vector<float>(cols, 0));
 
