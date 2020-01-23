@@ -213,7 +213,7 @@ class Simplex{
             while(!finished){
                 if (iter % printFreq == 0)
                     cout << "\tIter " << iter << "." << endl;
-                if (iter > 10000)
+                if (iter > 20000)
                     break;
                 if(Aw[(rowsW - 1) * colsW + (colsW - 1)] >= 0){
                     finished = true;
@@ -308,7 +308,7 @@ class Simplex{
             while(!finished){
                 if (iter % printFreq == 0)
                     cout << "\tIter " << iter << "." << endl;
-                if (iter > 100000)
+                if (iter > 20000)
                     break;
                 int q = 0;
                 while ((A[(rows - 1) * cols + q] <= 0) && (q < (cols - 1))){
@@ -517,10 +517,10 @@ int main()
     elapsed = rd - sw;
     printf("Reduce() time: %f s.\n", elapsed.count());
     
-    //simplex.SimplexN();
-    //auto sn = std::chrono::high_resolution_clock::now();
-    //elapsed = sn - rd;
-    //printf("SimplexN() time: %f s.\n", elapsed.count());
+    simplex.SimplexN();
+    auto sn = std::chrono::high_resolution_clock::now();
+    elapsed = sn - rd;
+    printf("SimplexN() time: %f s.\n", elapsed.count());
     
     simplex.printP();
 
