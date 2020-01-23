@@ -167,7 +167,7 @@ class Simplex{
             while(!finished){
                 if (iter % printFreq == 0)
                     cout << "\tIter " << iter << "." << endl;
-                if (iter > 10000)
+                if (iter > 20000)
                     break;
                 if(Aw[rows - 1][cols - 1] >= 0){
                     finished = true;
@@ -265,6 +265,8 @@ class Simplex{
             while(!finished){
                 if (iter % printFreq == 0)
                     cout << "\tIter " << iter << "." << endl;
+                if (iter > 20000)
+                    break;
                 int q = 0;
                 while ((A[rows - 1][q] <= 0) && (q < (cols - 1))){
                     q++;
@@ -413,14 +415,14 @@ void rand_init(float **input, int rows, int cols){
 int main()
 {
     
-    int rows = 6;
-    int cols = 5;
-    float input[6][5] = {{1, 1, 0, 0, -7}, 
-                   {0, 0, 1, 1, -9},
-                   {-1, 0, 0, 0, 5},
-                   {0, -1, -1, 0, 10},
-                   {0, 0, 0, -1, 7},
-                   {-10, -8, -9, -12, 0}};
+    //int rows = 6;
+    //int cols = 5;
+    //float input[6][5] = {{1, 1, 0, 0, -7}, 
+    //               {0, 0, 1, 1, -9},
+    //               {-1, 0, 0, 0, 5},
+    //               {0, -1, -1, 0, 10},
+    //               {0, 0, 0, -1, 7},
+    //               {-10, -8, -9, -12, 0}};
 
     //int rows = 4;
     //int cols = 4;
@@ -437,14 +439,13 @@ int main()
     //               {1, 1, -9},
     //               {1, 3, -229}};
     
-    //int rows = 1000;
-    //int cols = rows / 2;
-    //float **input = new float*[rows];
-    //for (int i = 0; i < rows; i++)
-    //    input[i] = new float[cols];
-
-    //rand_init(input, rows, cols);
-    //cout << "finish initialization." << endl;
+    int rows = 1000;
+    int cols = rows / 2;
+    float **input = new float*[rows];
+    for (int i = 0; i < rows; i++)
+        input[i] = new float[cols];
+    rand_init(input, rows, cols);
+    cout << "finish initialization." << endl;
 
     vector <vector<float> > A(rows, vector<float>(cols, 0));
 
@@ -474,10 +475,10 @@ int main()
     elapsed = rd - sw;
     printf("Reduce() time: %f s.\n", elapsed.count());
     
-    //simplex.SimplexN();
-    //auto sn = std::chrono::high_resolution_clock::now();
-    //elapsed = sn - rd;
-    //printf("SimplexN() time: %f s.\n", elapsed.count());
+    simplex.SimplexN();
+    auto sn = std::chrono::high_resolution_clock::now();
+    elapsed = sn - rd;
+    printf("SimplexN() time: %f s.\n", elapsed.count());
     
     simplex.printP();
 
